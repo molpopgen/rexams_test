@@ -1,0 +1,46 @@
+```{r, echo=F}
+library(reticulate)
+```
+
+Question
+========
+
+How would you describe the slope of this graph?
+
+```{python, echo=FALSE}
+import matplotlib.pyplot as plt
+x = [i for i in range(10)]
+y = [2*i for i in x]
+plt.plot(x, y)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.savefig("slope.png")
+```
+
+![](slope.png)
+
+Answerlist
+----------
+
+* Positive
+* Negative
+* Slope is zero
+
+Solution
+========
+The answer **Positive**
+
+Answerlist
+----------
+* Correct. Text.
+* Incorrect. Some text here.
+* Incorrect. Only one trait
+
+Meta-information
+================
+exname: Bio 97 quiz 1
+extype: schoice
+exsolution: 100
+exshuffle: 3
+
+

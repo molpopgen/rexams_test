@@ -19,12 +19,18 @@ all: quiz1.pdf quiz1_solutions.pdf
 #    making custom edits of the LaTeX template file.
 #    I took theirs, copied it to bio97.tex and
 #    edited according to my needs.
+#
 
-quiz1.pdf: question1.Rmd questionwithRcode.Rmd
-	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd'), dir='.',name='quiz', template='bio97')"
+SOURCES:=bio97.tex \
+		 question1.Rmd \
+		 questionwithRcode.Rmd \
+		 questionwithPythonCode.Rmd
 
-quiz1_solutions.pdf: question1.Rmd questionwithRcode.Rmd
-	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd'), dir='.',name='quiz_solutions')"
+quiz1.pdf: $(SOURCES)
+	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz', template='bio97')"
+
+quiz1_solutions.pdf: $(SOURCES)
+	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions')"
 
 clean:
 	rm -f quiz1.pdf *_solutions*.pdf
