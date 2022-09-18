@@ -28,20 +28,20 @@ SOURCES:=bio97.tex \
 
 VENV:=venv
 
-quiz1.pdf: $(SOURCES) $(VENV)
+quiz1.pdf quiz2.pdf quiz3.pdf: $(SOURCES) $(VENV)
 	( \
 		. venv/bin/activate; \
-	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz', template='bio97')"; \
+	Rscript -e "library(exams);set.seed(666);exams2pdf(n=3, c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz', template='bio97')"; \
 	)
 
-quiz1_solutions.pdf: $(SOURCES) $(VENV)
+quiz1_solutions.pdf quiz2_solutions.pdf quiz3_solutions.pdf: $(SOURCES) $(VENV)
 	( \
 		. venv/bin/activate; \
-	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions')"; \
+	Rscript -e "library(exams);set.seed(666);exams2pdf(n=3, c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions')"; \
 	)
 
 clean:
-	rm -f quiz1.pdf *_solutions*.pdf $(VENV)
+	rm -rf quiz1.pdf quiz2.pdf quiz3.pdf *_solutions*.pdf $(VENV)
 
 venv: requirements.txt
 	rm -rf venv
