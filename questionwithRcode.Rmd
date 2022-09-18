@@ -1,0 +1,36 @@
+```{r, echo=F}
+x = runif(1, 1, 20)
+y = runif(1, 5, 10)
+```
+
+Question
+========
+
+What is `r x` `+` `r y`?
+
+Answerlist
+----------
+
+* `r x + y`
+* `r x * y`
+* `r x - y`
+* `r x / y`
+
+Solution
+========
+The answer is `r x + y`
+
+Answerlist
+----------
+* True. Text.
+* False. Some text here.
+* False. Only one trait
+* False. Not relevant here.
+
+Meta-information
+================
+exname: Bio 97 quiz 1
+extype: schoice
+exsolution: 1000
+exshuffle: 3
+
