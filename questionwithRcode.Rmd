@@ -33,4 +33,3 @@ exname: Bio 97 quiz 1
 extype: schoice
 exsolution: 1000
 exshuffle: 3
-

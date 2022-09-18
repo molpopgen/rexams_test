@@ -6,6 +6,7 @@ Question
 ========
 
 How would you describe the slope of this graph?
+\nopagebreak
 
 ```{python, echo=FALSE}
 import matplotlib.pyplot as plt
