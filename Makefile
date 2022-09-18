@@ -1,4 +1,4 @@
-all: quiz1.pdf quiz1_solutions.pdf
+all: quiz1.pdf quiz_solutions1.pdf
 
 # Key points:
 # 1. An "exam" is a list of Rmd files.
@@ -34,7 +34,7 @@ quiz1.pdf quiz2.pdf quiz3.pdf: $(SOURCES) $(VENV)
 	Rscript -e "library(exams);set.seed(666);exams2pdf(n=3, c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz', template='bio97')"; \
 	)
 
-quiz1_solutions.pdf quiz2_solutions.pdf quiz3_solutions.pdf: $(SOURCES) $(VENV)
+quiz_solutions1.pdf quiz_solutions2.pdf quiz_solutions3.pdf: $(SOURCES) $(VENV)
 	( \
 		. venv/bin/activate; \
 	Rscript -e "library(exams);set.seed(666);exams2pdf(n=3, c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions')"; \
