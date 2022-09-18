@@ -26,11 +26,28 @@ SOURCES:=bio97.tex \
 		 questionwithRcode.Rmd \
 		 questionwithPythonCode.Rmd
 
-quiz1.pdf: $(SOURCES)
-	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz', template='bio97')"
+VENV:=venv
 
-quiz1_solutions.pdf: $(SOURCES)
-	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions')"
+quiz1.pdf: $(SOURCES) $(VENV)
+	( \
+		. venv/bin/activate; \
+	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz', template='bio97')"; \
+	)
+
+quiz1_solutions.pdf: $(SOURCES) $(VENV)
+	( \
+		. venv/bin/activate; \
+	Rscript -e "library(exams);set.seed(666);exams2pdf(c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions')"; \
+	)
 
 clean:
-	rm -f quiz1.pdf *_solutions*.pdf
+	rm -f quiz1.pdf *_solutions*.pdf $(VENV)
+
+venv: requirements.txt
+	rm -rf venv
+	python3 -m venv venv
+	( \
+		. venv/bin/activate; \
+		python -m pip install --upgrade pip wheel; \
+		python -m pip install --no-cache -r requirements.txt; \
+	)
