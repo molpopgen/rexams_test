@@ -18,7 +18,7 @@ plt.ylabel('y')
 plt.savefig("slope.png")
 ```
 
-![](slope.png)
+![](slope.png){ width=50% }
 
 Answerlist
 ----------
