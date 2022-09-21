@@ -5,8 +5,8 @@ include_supplement("hemophilia.jpg", recursive = TRUE)
 Question
 ========
 What is this image about?
-\
-![](hemophilia.jpg)
+
+![](hemophilia.jpg){ width=50% }
 
 Answerlist
 ----------

@@ -1,0 +1,30 @@
+
+Question
+========
+This is exam version **A**.
+Please bubble **A** into your scan tron form.
+
+Answerlist
+----------
+* A
+* B
+* C
+* D
+
+Solution
+========
+The answer is A
+
+Answerlist
+----------
+* Yay
+* No
+* Nope
+* Nada
+
+Meta-information
+================
+exname: Bio 97 quiz 1
+extype: schoice
+exsolution: 1000
+exshuffle: F

@@ -1,4 +1,4 @@
-all: quiz1.pdf quiz1_solutions.pdf
+all: quiz1.pdf quiz_solutions1.pdf
 
 # Key points:
 # 1. An "exam" is a list of Rmd files.
@@ -22,22 +22,31 @@ all: quiz1.pdf quiz1_solutions.pdf
 #
 
 SOURCES:=bio97.tex \
+		 versionA.Rmd \
+		 versionB.Rmd \
+		 versionC.Rmd \
 		 question1.Rmd \
 		 questionwithRcode.Rmd \
 		 questionwithPythonCode.Rmd
 
 VENV:=venv
 
-quiz1.pdf quiz2.pdf quiz3.pdf: $(SOURCES) $(VENV)
+# NOTE: this doesn't work.
+# The first array will very often result in > 1
+# exam of the same version.
+# I think we need each quiz to be a different target,
+# meaning we need to handle seeds better.
+# We'll get better parallel builds, tho!
+quiz1.pdf quiz2.pdf quiz3.pdf: $(SOURCES) $(VENV) intro.tex
 	( \
 		. venv/bin/activate; \
-	Rscript -e "library(exams);set.seed(666);exams2pdf(n=3, c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz', template='bio97')"; \
+	Rscript -e "library(exams);set.seed(666);exams2nops(n=3, institution='UC Irvine', course='Bio 97', logo='fake.png', blank=0, intro='intro.tex', list('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz')"; \
 	)
 
-quiz1_solutions.pdf quiz2_solutions.pdf quiz3_solutions.pdf: $(SOURCES) $(VENV)
+quiz_solutions1.pdf quiz_solutions2.pdf quiz_solutions3.pdf: $(SOURCES) $(VENV)
 	( \
 		. venv/bin/activate; \
-	Rscript -e "library(exams);set.seed(666);exams2pdf(n=3, c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions')"; \
+	Rscript -e "library(exams);set.seed(666);exams2pdf(n=3, c('question1.Rmd', 'questionwithRcode.Rmd', 'questionwithPythonCode.Rmd'), dir='.',name='quiz_solutions',template='solution')"; \
 	)
 
 clean:
