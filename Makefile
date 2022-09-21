@@ -22,9 +22,6 @@ all: quiz1.pdf quiz_solutions1.pdf
 #
 
 SOURCES:=bio97.tex \
-		 versionA.Rmd \
-		 versionB.Rmd \
-		 versionC.Rmd \
 		 question1.Rmd \
 		 questionwithRcode.Rmd \
 		 questionwithPythonCode.Rmd
